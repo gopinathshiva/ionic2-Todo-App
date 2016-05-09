@@ -1,0 +1,46 @@
+<ion-navbar *navbar>
+  <button menuToggle class="header-icon-style">
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <button (click)="openSamplePage();" class="header-icon-style">
+    <ion-icon name="notifications"></ion-icon>
+  </button>
+  <button (click)="openSamplePage();" class="header-icon-style f-right">
+    <ion-icon name="search"></ion-icon>
+  </button>
+  <button (click)="openSamplePage();" class="header-icon-style f-right">
+    <ion-icon name="mail"></ion-icon>
+  </button>
+  <button (click)="openSamplePage();" class="header-icon-style f-right">
+    <ion-icon name="person-add"></ion-icon>
+  </button>
+  <button (click)="openSamplePage();" class="header-icon-style f-right">
+    <ion-icon name="speedometer"></ion-icon>
+  </button>
+</ion-navbar>
+
+<ion-content class="dashboard-content">
+
+  <ion-toolbar>
+    <ion-title>Bulletin Board</ion-title>
+  </ion-toolbar>
+
+  <div *ngFor="#item of items">
+  <ion-card  class="card-style" no-margin no-padding *ngIf="!item.isHidden">
+    <ion-card-header>
+      {{item.title}}
+    </ion-card-header>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{item.ownerImg}}">
+      </ion-avatar>
+      <h2>{{item.owner}}</h2>
+      <p>Posted: {{item.postedOn | date}}</p>
+    </ion-item>
+    <button class="header-icon-style f-right" (click)="pinItem(item);">
+      <ion-icon [name]="itemStatus(item)"></ion-icon>
+    </button>
+  </ion-card>
+  </div>
+  <button class="add-button" fab (click)="addItem();">+</button>
+</ion-content>

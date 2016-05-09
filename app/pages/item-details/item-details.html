@@ -1,0 +1,40 @@
+<ion-navbar *navbar>
+  <button menuToggle *ngIf="!selectedItem">
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Item Details</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Subject:</ion-label>
+      <ion-input [(ngModel)]="subject" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Note:</ion-label>
+      <ion-textarea [(ngModel)]="note" type="text"></ion-textarea>
+    </ion-item>
+    <ion-item class="radio-group-title">Your note to be displayed for:</ion-item>
+    <ion-list radio-group [(ngModel)]="selectedTime">
+      <ion-item>
+        <ion-label>1 Hour</ion-label>
+        <ion-radio checked value="3600000"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>1 Day</ion-label>
+        <ion-radio value="86400000"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>1 Week</ion-label>
+        <ion-radio value="604800000"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+  </ion-list>
+  <button [disabled]="!subject" class="add-button post-note" fab (click)="addItem();">Post Note</button>
+</ion-content>
